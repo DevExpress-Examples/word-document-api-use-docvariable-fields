@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T830501)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-# Word Processing Document API - Use Document Variable (DOCVARIABLE) Fields
+# Word Processing Document API - How to Use DOCVARIABLE Fields in a Document
 
 This example illustrates the use of a <strong>DOCVARIABLE</strong> field to provide additional information which is dependent on the value of a merged field. This technique is implemented so each merged document contains a weather report for a location that corresponds to the current data record.</p>
 <p>NB: We do not provide code for retrieving weather information. You can implement a custom weather information provider.</p>
