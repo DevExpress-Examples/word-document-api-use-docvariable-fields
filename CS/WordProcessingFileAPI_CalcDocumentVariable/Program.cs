@@ -14,20 +14,27 @@ namespace WordProcessingFileAPI_CalcDocumentVariable
     {
         static void Main(string[] args)
         {
-            RichEditDocumentServer srv = new RichEditDocumentServer();
-            srv.LoadDocument("Docs\\invitation.docx");
+            RichEditDocumentServer wordProcessor = new RichEditDocumentServer();
+            wordProcessor.LoadDocument("Docs\\invitation.docx", DocumentFormat.OpenXml);
 
-            srv.Document.Fields[0].Locked = true;
+            Document document = wordProcessor.Document;
+            //Lock the first field to prevent updates
+            document.Fields[0].Locked = true;
 
-            srv.Options.MailMerge.DataSource = new SampleData();
-            srv.Document.CalculateDocumentVariable += Document_CalculateDocumentVariable;
-            MailMergeOptions myMergeOptions = srv.Document.CreateMailMergeOptions();
+            // Handle the CalculateDocumentVariable event
+            document.CalculateDocumentVariable += Document_CalculateDocumentVariable;
 
-            srv.MailMergeRecordStarted += srv_MailMergeRecordStarted;
-            srv.MailMergeRecordFinished += srv_MailMergeRecordFinished;
-
+            // Adjust mail-merge options
+            MailMergeOptions myMergeOptions = document.CreateMailMergeOptions();
             myMergeOptions.MergeMode = MergeMode.NewSection;
-            srv.Document.MailMerge(myMergeOptions, "Result.docx", DocumentFormat.OpenXml);
+            myMergeOptions.DataSource = new SampleData();
+
+            // Handle mail-merge events
+            wordProcessor.MailMergeRecordStarted += wordProcessor_MailMergeRecordStarted;
+            wordProcessor.MailMergeRecordFinished += wordProcessor_MailMergeRecordFinished;
+
+            // Mail-merge the document
+            document.MailMerge(myMergeOptions, "Result.docx", DocumentFormat.OpenXml);
 
             Process.Start("Result.docx");
         }
@@ -66,17 +73,16 @@ namespace WordProcessingFileAPI_CalcDocumentVariable
             e.Handled = true;
         }
 
-        private static void srv_MailMergeRecordStarted(object sender, MailMergeRecordStartedEventArgs e)
+        private static void wordProcessor_MailMergeRecordStarted(object sender, MailMergeRecordStartedEventArgs e)
             {
-                DocumentRange _range = e.RecordDocument.InsertText(e.RecordDocument.Range.Start, String.Format("Created on {0:G}\n\n", DateTime.Now));
-                CharacterProperties cp = e.RecordDocument.BeginUpdateCharacters(_range);
+                DocumentRange insertedRange = e.RecordDocument.InsertText(e.RecordDocument.Range.Start, String.Format("Created on {0:G}\n\n", DateTime.Now));
+                CharacterProperties cp = e.RecordDocument.BeginUpdateCharacters(insertedRange);
                 cp.FontSize = 8;
                 cp.ForeColor = Color.Red;
-                cp.Hidden = true;
                 e.RecordDocument.EndUpdateCharacters(cp);
             }
 
-            private static void srv_MailMergeRecordFinished(object sender, MailMergeRecordFinishedEventArgs e)
+            private static void wordProcessor_MailMergeRecordFinished(object sender, MailMergeRecordFinishedEventArgs e)
             {
                 e.RecordDocument.AppendDocumentContent("Docs\\bungalow.docx", DocumentFormat.OpenXml);
             }
