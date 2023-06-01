@@ -5,6 +5,24 @@
 <!-- default badges end -->
 # Word Processing Document API - How to Use DOCVARIABLE Fields in a Document
 
-This example illustrates the use of a <strong>DOCVARIABLE</strong> field to provide additional information which is dependent on the value of a merged field. This technique is implemented so each merged document contains a weather report for a location that corresponds to the current data record.</p>
-<p>NB: We do not provide code for retrieving weather information. You can implement a custom weather information provider.</p>
-<p>The location is represented by a merge field. It is included as an argument within the DOCVARIABLE field. When the DOCVARIABLE field is updated, the <strong>DevExpress.XtraRichEdit.API.Native.Document.CalculateDocumentVariable</strong> event is triggered. A code within the event handler obtains the information on weather. It uses <u>e.VariableName</u> to get the name of the variable within the field, <u>e.Arguments</u> to get the location and returns the calculated result in <u>e.Value</u> property.<br /> The <strong>MailMergeRecordStarted</strong> event is handled to insert a hidden text indicating when the document is created. <br /> The <strong>MyProgressIndicatorService</strong> class is implemented and registered as a service to allow progress indication using the ProgressBar control.</p>
+This example illustrates the use of a **DOCVARIABLE** field to provide additional information which is dependent on the value of a merged field. This technique is implemented so each merged document contains a weather report for a location that corresponds to the current data record.
+
+> **Note**
+>
+> We do not provide code for retrieving weather information. You can implement a custom weather information provider.
+
+## Implementation Details
+
+A MERGEFIELD field defines a location. The field is included as an argument in the DOCVARIABLE field. When the DOCVARIABLE field is updated, the [Document.CalculateDocumentVariable](https://docs.devexpress.com/OfficeFileAPI/DevExpress.XtraRichEdit.API.Native.Document.CalculateDocumentVariable) event is triggered. A code within the event handler obtains the weather information. The [e.VariableName](https://docs.devexpress.com/OfficeFileAPI/DevExpress.XtraRichEdit.CalculateDocumentVariableEventArgs.VariableName) property gets the name of the variable in the field, the <u>e.Arguments</u> property gets the location, and the <u>e.Value</u> property returns the calculated result.
+
+The [MailMergeRecordStarted](https://docs.devexpress.com/OfficeFileAPI/DevExpress.XtraRichEdit.RichEditDocumentServer.MailMergeRecordStarted) event is handled to insert a hidden text that indicates when the document is created.
+
+## Files to Review
+
+* [Program.cs](.CS/WordProcessingFileAPI_CalcDocumentVariable/Program.cs) (VB: [Program.vb](./VB/WordProcessingFileAPI_CalcDocumentVariable/Program.vb))
+
+## Documentation
+
+* [DOCVARIABLE Field](https://docs.devexpress.com/OfficeFileAPI/15291/word-processing-document-api/fields/field-codes/docvariable)
+* [Fields](https://docs.devexpress.com/OfficeFileAPI/15280/word-processing-document-api/fields)
+* [How to: Replace a Placeholder with a Document Element](https://docs.devexpress.com/OfficeFileAPI/404369/word-processing-document-api/examples/search-and-replace/how-to-replace-a-placeholder-with-a-document-element)
