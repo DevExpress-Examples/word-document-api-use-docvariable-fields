@@ -19,7 +19,7 @@ The [MailMergeRecordStarted](https://docs.devexpress.com/OfficeFileAPI/DevExpres
 
 ## Files to Review
 
-* [Program.cs](.CS/WordProcessingFileAPI_CalcDocumentVariable/Program.cs) (VB: [Program.vb](./VB/WordProcessingFileAPI_CalcDocumentVariable/Program.vb))
+* [Program.cs](./CS/WordProcessingFileAPI_CalcDocumentVariable/Program.cs) (VB: [Program.vb](./VB/WordProcessingFileAPI_CalcDocumentVariable/Program.vb))
 
 ## Documentation
 
