@@ -14,6 +14,9 @@ This example illustrates the use of a **DOCVARIABLE** field to provide additiona
 
 ## Implementation Details
 
+> [!Important]  
+> The Universal Subscription or an additional Office File API Subscription is required to use this example in production code. For pricing information, please refer to the [DevExpress Subscription](https://www.devexpress.com/Subscriptions/) page. 
+
 A MERGEFIELD field defines a location. The field is included as an argument in the DOCVARIABLE field. When the DOCVARIABLE field is updated, the [Document.CalculateDocumentVariable](https://docs.devexpress.com/OfficeFileAPI/DevExpress.XtraRichEdit.API.Native.Document.CalculateDocumentVariable) event is triggered. A code within the event handler obtains the weather information. The [e.VariableName](https://docs.devexpress.com/OfficeFileAPI/DevExpress.XtraRichEdit.CalculateDocumentVariableEventArgs.VariableName) property gets the name of the variable in the field, the <u>e.Arguments</u> property gets the location, and the <u>e.Value</u> property returns the calculated result.
 
 The [MailMergeRecordStarted](https://docs.devexpress.com/OfficeFileAPI/DevExpress.XtraRichEdit.RichEditDocumentServer.MailMergeRecordStarted) event is handled to insert a hidden text that indicates when the document is created.
