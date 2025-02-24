@@ -29,7 +29,9 @@ Namespace WordProcessingFileAPI_CalcDocumentVariable
 
             ' Mail-merge the document
             document.MailMerge(myMergeOptions, "Result.docx", DocumentFormat.OpenXml)
-            Call Process.Start("Result.docx")
+            Dim processor As New Process()
+            processor.StartInfo = New ProcessStartInfo("Result.docx") With {.UseShellExecute = True}
+            processor.Start()
         End Sub
 
         Private Shared Sub Document_CalculateDocumentVariable(ByVal sender As Object, ByVal e As CalculateDocumentVariableEventArgs)
