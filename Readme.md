@@ -31,7 +31,7 @@ The [MailMergeRecordStarted](https://docs.devexpress.com/OfficeFileAPI/DevExpres
 * [Fields](https://docs.devexpress.com/OfficeFileAPI/15280/word-processing-document-api/fields)
 * [How to: Replace a Placeholder with a Document Element](https://docs.devexpress.com/OfficeFileAPI/404369/word-processing-document-api/examples/search-and-replace/how-to-replace-a-placeholder-with-a-document-element)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=word-document-api-use-docvariable-fields&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=word-document-api-use-docvariable-fields&~~~was_helpful=no)
 
